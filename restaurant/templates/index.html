@@ -1,0 +1,85 @@
+{% load static %}
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/three.css' %}">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  ></script>
+ 
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js?fbclid=IwAR2s8V1BkjgZOBQhELChAmX48Xqy1NrVdH_Et5i5smGNNwvsUGnbT4xf0OY" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+{% comment %} <div class="container">
+    <div class="row">
+
+        {% if user.is_staff %}
+        <a href="{% url 'createRestaurant' %}">New Restaurant</a>
+        {% endif %}
+        {% if user.is_active %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign up</a>
+        {% endif %}
+        
+
+        <div class="jumbotron jumbotron-fluid">
+        {% for restaurant in res %}
+        <div class="row">
+        <a href="{% url 'listItems' restaurant.id %}">{{restaurant.name}}</a>
+        {% if user.is_staff %}
+            <a href="{% url 'updateRestaurant' restaurant.id %}">Update Restaurant</a>
+        {% endif %}
+        {% comment %} <a href="{% url 'updateRestaurant' restaurant.id %}">Update Restaurant</a>
+        </div>
+        {% endfor %}
+    
+        </div>
+    </div>
+</div>
+
+</body> {% endcomment %}
+
+
+
+<body>
+<div class="container">     
+      <div class="row">
+
+      <div class="col-sm-9 col-md-6 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            {% if user.is_staff %}
+            <a href="{% url 'createRestaurant' %}">New Restaurant</a>
+            {% endif %}
+            {% if user.is_active %}
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'past_orders' %}">Past Orders</a>
+            {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Sign up</a>
+            {% endif %}
+            <h3 class="card-title text-center">Online Restaurants</h3>
+            <div class="col-md-auto">
+            {% for restaurant in res %}
+              <div class="row">
+                  <a class="res-name" href="{% url 'listItems' restaurant.id %}"><button class="btn btn-st btn-primary text-uppercase">{{restaurant.name}}</a></button>
+                  </div>
+          <div class="row">
+          {% if user.is_staff %}
+            <a href="{% url 'updateRestaurant' restaurant.id %}">Update Restaurant</a>
+            <a href="{% url 'deleteRestaurant' restaurant.id %}">Delete Restaurant</a>
+            {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+
+      </div>
+      <hr class="my-4">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

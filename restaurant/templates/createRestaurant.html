@@ -1,0 +1,26 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="jumbotron jumbotron-fluid">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            {% if user.is_authenticated %}
+            <button type="submit">Create/Update Restaurant</button>
+            {% endif %}
+        </form>
+
+        {% if restaurant %}
+            <a href="{% url 'deleteRestaurant' restaurant.id %}">Delete Restaurant</a>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>

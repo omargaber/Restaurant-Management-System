@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="jumbotron jumbotron-fluid">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Are you sure you want to delete {{ item.name }} ?</h2>
+            <button type="submit">Delete Item</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+</body>

@@ -1,0 +1,27 @@
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    </head>
+    
+    <body>
+    
+        <div class="container">
+            <div class="row">
+    
+    
+                <div class="jumbotron jumbotron-fluid">
+                    <h1>{{ order.name }}</h1>
+                    {% for record in items %}
+                    <div class="row">
+                        <h3>{{record.Item.name}}</h3>
+                        <h4>{{record.Item.description}}</h4>
+                        <p>{{record.Item.price}}</p>
+                        <p> Quantity : {{record.quantity}}</p>
+                        <p>checked_out : {{checked}}</p>
+                    </div>
+                    {% endfor %}
+    
+                </div>
+            </div>
+        </div>
+    
+    </body>

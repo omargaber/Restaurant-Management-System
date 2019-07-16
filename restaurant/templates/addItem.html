@@ -1,0 +1,24 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="jumbotron jumbotron-fluid">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Add/Update Item</button>
+        </form>
+
+        {% if item %}
+            <a href="{% url 'deleteItem' res.id item.id %}">Delete Item</a>
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
